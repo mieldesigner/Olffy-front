@@ -1,0 +1,300 @@
+.section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 80px) clamp(14px, 4vw, 48px);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(26px, 3.5vw, 38px);
+}
+
+.igIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: var(--olffy-morado-suave);
+  color: var(--olffy-morado);
+  margin-bottom: 12px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 4vw, 42px);
+  color: var(--olffy-cafe);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0 auto 16px;
+  max-width: 440px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+  color: var(--olffy-cafe-68);
+}
+
+.handleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1.5px solid var(--olffy-morado);
+  color: var(--olffy-morado);
+  background: var(--olffy-blanco);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.handleBtn:hover,
+.handleBtn:focus-visible {
+  background: var(--olffy-morado);
+  color: var(--olffy-blanco);
+}
+
+/* Galería editorial de posts. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.6vw, 16px);
+}
+
+.post {
+  position: relative;
+  /* Miniaturas un poco más alargadas (retrato tipo IG). */
+  aspect-ratio: 4 / 5;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.post:hover,
+.post:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(42, 28, 16, 0.16);
+}
+
+/* Chip de categoría siempre visible. */
+.postTheme {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--olffy-cafe);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(2px);
+}
+
+.postIcon {
+  display: grid;
+  place-items: center;
+}
+
+/* Overlay social al hover. */
+.postOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--olffy-blanco);
+  background: rgba(42, 28, 16, 0.34);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.post:hover .postOverlay,
+.post:focus-visible .postOverlay {
+  opacity: 1;
+}
+
+.overlayLikes {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.overlayCta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Modal editorial de post (grande, imagen protagonista) ── */
+.modalPanel {
+  --modal-panel-width: min(960px, 100%);
+}
+
+.modal {
+  display: grid;
+  /* La imagen domina la composición; el panel de info acompaña a la derecha. */
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr);
+}
+
+.modalMedia {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.modalTheme {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--olffy-cafe);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 5px 13px;
+  border-radius: var(--radius-pill);
+}
+
+.modalBody {
+  padding: 26px 28px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalAccount {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--olffy-cafe-08);
+  margin-bottom: 14px;
+}
+
+.modalAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--olffy-morado);
+  color: var(--olffy-blanco);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  flex-shrink: 0;
+}
+
+.modalHandle {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--olffy-cafe);
+}
+
+.modalMeta {
+  font-size: 12px;
+  color: var(--olffy-cafe-55);
+  margin-top: 1px;
+}
+
+.modalIg {
+  margin-left: auto;
+  color: var(--olffy-morado);
+}
+
+.modalCaption {
+  margin: 0 0 16px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--olffy-cafe);
+}
+
+.modalStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.modalLikes {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--olffy-naranjo);
+}
+
+.modalDate {
+  font-size: 12px;
+  color: var(--olffy-cafe-55);
+}
+
+.modalCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: auto;
+  border: none;
+  background: var(--olffy-morado);
+  color: var(--olffy-blanco);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.modalCta:hover,
+.modalCta:focus-visible {
+  background: #4a4893;
+}
+
+/* Tablet: reduce un poco la dominancia de la imagen. */
+@media (max-width: 820px) {
+  .modal {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 1fr);
+  }
+}
+
+/* Mobile: modal apilado (media arriba cuadrada, info abajo). */
+@media (max-width: 600px) {
+  .modal {
+    grid-template-columns: 1fr;
+  }
+
+  .modalMedia {
+    aspect-ratio: 1 / 1;
+    border-top-right-radius: var(--radius-lg);
+    border-bottom-left-radius: 0;
+  }
+}

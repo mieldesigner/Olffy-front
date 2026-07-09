@@ -60,6 +60,13 @@
   gap: 12px;
 }
 
+/* Mobile: los pares de campos pasan a una columna para no desbordar. */
+@media (max-width: 560px) {
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+}
+
 .label {
   font-size: 12px;
   font-weight: 600;
@@ -76,6 +83,9 @@
   color: var(--olffy-cafe);
   outline: none;
   background: var(--olffy-blanco);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .select {

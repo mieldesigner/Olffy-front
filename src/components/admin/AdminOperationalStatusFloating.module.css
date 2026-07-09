@@ -103,9 +103,16 @@
   background: var(--olffy-cafe-08);
 }
 
+/* En tablet/mobile hay topbar arriba: bajamos el flotante para no solaparlo. */
+@media (max-width: 1199px) {
+  .floating {
+    top: 72px;
+  }
+}
+
 @media (max-width: 560px) {
   .floating {
     right: 14px;
-    top: 14px;
+    top: 68px;
   }
 }

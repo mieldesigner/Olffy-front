@@ -5,34 +5,33 @@ interface BenefitItem {
   icon: GiftIconName;
   title: string;
   desc: string;
-  bg: string;
-  iconBg: string;
+  chipBg: string;
+  chipColor: string;
 }
 
+// Beneficios como mini feature blocks: chip de color por beneficio + texto.
+// Lenguaje distinto al de las cards de "Conoce OLFFY" (más compacto y ágil).
 const BENEFITS: BenefitItem[] = [
-  { icon: 'package', title: 'Envíos a todo Chile', desc: 'Rápido y seguro', bg: 'var(--olffy-crema)', iconBg: 'var(--olffy-amarillo)' },
-  { icon: 'store', title: 'Retiro gratis en tienda', desc: 'En Viña del Mar', bg: 'var(--olffy-morado-suave)', iconBg: 'var(--olffy-morado)' },
-  { icon: 'palette', title: 'Papelería ilustrada', desc: 'Diseños propios', bg: 'var(--olffy-naranjo-suave)', iconBg: 'var(--olffy-naranjo)' },
-  { icon: 'heart', title: 'Hecho con amor', desc: 'A mano, claro', bg: 'var(--olffy-amarillo-suave)', iconBg: '#c8901a' },
+  { icon: 'package', title: 'Envíos a todo Chile', desc: 'Rápido y seguro, a tu puerta', chipBg: 'var(--olffy-amarillo-suave)', chipColor: '#c8901a' },
+  { icon: 'store', title: 'Retiro gratis en tienda', desc: 'Te esperamos en Viña del Mar', chipBg: 'var(--olffy-morado-suave)', chipColor: 'var(--olffy-morado)' },
+  { icon: 'palette', title: 'Papelería ilustrada', desc: 'Diseños propios hechos a mano', chipBg: 'var(--olffy-naranjo-suave)', chipColor: 'var(--olffy-naranjo)' },
+  { icon: 'heart', title: 'Hecho con amor', desc: 'Cada pedido, empacado con cariño', chipBg: '#d8ecd9', chipColor: '#2e7d32' },
 ];
 
-// Franja de 4 beneficios de marca — cierre de la Home, igual que el original.
 export function BenefitsStrip() {
   return (
     <div className={styles.wrap}>
-      <div className={styles.grid}>
+      <ul className={styles.grid}>
         {BENEFITS.map((item) => (
-          <div key={item.title} className={styles.item} style={{ background: item.bg }}>
-            <div className={styles.iconBox} style={{ background: item.iconBg }}>
-              <GiftIcon name={item.icon} size={20} color="#fff" />
-            </div>
-            <div>
-              <div className={styles.title}>{item.title}</div>
-              <div className={styles.desc}>{item.desc}</div>
-            </div>
-          </div>
+          <li key={item.title} className={styles.item}>
+            <span className={styles.chip} style={{ background: item.chipBg, color: item.chipColor }} aria-hidden="true">
+              <GiftIcon name={item.icon} size={22} color={item.chipColor} />
+            </span>
+            <span className={styles.title}>{item.title}</span>
+            <span className={styles.desc}>{item.desc}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

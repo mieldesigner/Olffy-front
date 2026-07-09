@@ -1,5 +1,4 @@
-import { HeroCarousel, FeatureBanner, BenefitsStrip } from '../components/home';
-import { ProductGrid } from '../components/product';
+import { HeroCarousel, FeatureBanner, ProductCarousel, BenefitsStrip, InstagramFeed, CommunitySignup } from '../components/home';
 import { Button, ProductImage } from '../components/ui';
 import { GiftIcon, type GiftIconName } from '../components/storefront';
 import type { PublicPage } from '../components/layout';
@@ -22,8 +21,9 @@ const VALUES: { icon: GiftIconName; bg: string; iconBg: string; title: string; d
 ];
 
 // Home real del storefront — reemplaza el placeholder central de App.tsx.
-// Compone HeroCarousel, FeatureBanner ("Lanzamientos"), ProductGrid
-// ("Recién llegados"), la sección editorial "Conoce OLFFY" y BenefitsStrip.
+// Orden: Hero, banner de lanzamientos, "Nuevos productos" (carrusel), bloque de
+// marca "Conoce OLFFY" + franja de beneficios compacta, feed de Instagram
+// simulado y bloque de comunidad/suscripción.
 export function HomePage({ onProductClick, onNavigate }: HomePageProps) {
   return (
     <>
@@ -49,7 +49,7 @@ export function HomePage({ onProductClick, onNavigate }: HomePageProps) {
             Ver todos
           </Button>
         </div>
-        <ProductGrid products={FEATURED_PRODUCTS} onProductClick={onProductClick} />
+        <ProductCarousel products={FEATURED_PRODUCTS} onProductClick={onProductClick} />
       </section>
 
       <section className={styles.aboutSection}>
@@ -65,7 +65,7 @@ export function HomePage({ onProductClick, onNavigate }: HomePageProps) {
                 Descubre la historia detrás de OLFFY y cómo creamos productos únicos para
                 organizar tu mundo con magia.
               </p>
-              <Button variant="outline" style={{ marginTop: 24 }} onClick={() => onNavigate('historia')}>
+              <Button variant="primary" style={{ marginTop: 24 }} onClick={() => onNavigate('historia')}>
                 Ver nuestra historia →
               </Button>
             </div>
@@ -93,6 +93,10 @@ export function HomePage({ onProductClick, onNavigate }: HomePageProps) {
       </section>
 
       <BenefitsStrip />
+
+      <InstagramFeed />
+
+      <CommunitySignup />
     </>
   );
 }

@@ -1,40 +1,71 @@
 .wrap {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(40px, 5vw, 64px) clamp(14px, 4vw, 48px);
+  /* Más aire arriba y abajo para que la franja no quede pegada al borde. */
+  padding: clamp(32px, 4.5vw, 60px) clamp(14px, 4vw, 48px) clamp(48px, 5.5vw, 76px);
 }
 
 .grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.8vw, 18px);
 }
 
+/* Mini feature block: chip de color arriba, texto debajo. */
 .item {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 18px;
-  border-radius: var(--radius-md);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: clamp(18px, 2.2vw, 24px) clamp(16px, 2vw, 22px);
+  background: var(--olffy-blanco);
+  border: 1px solid var(--olffy-cafe-08);
+  border-radius: var(--radius-lg);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 }
 
-.iconBox {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+.item:hover {
+  transform: translateY(-3px);
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(42, 28, 16, 0.1);
+}
+
+.chip {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
   display: grid;
   place-items: center;
-  flex-shrink: 0;
-  font-size: 20px;
+  margin-bottom: 6px;
 }
 
 .title {
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15.5px;
   color: var(--olffy-cafe);
+  line-height: 1.2;
 }
 
 .desc {
-  font-size: 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
   color: var(--olffy-cafe-58, rgba(42, 28, 16, 0.58));
+}
+
+/* Tablet: 2 columnas. */
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 2 columnas compactas se mantienen legibles; 1 col en muy angosto. */
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

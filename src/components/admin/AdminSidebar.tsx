@@ -15,9 +15,13 @@ interface AdminSidebarProps {
   activeTab: AdminTab;
   onTabChange: (tab: AdminTab) => void;
   onExit: () => void;
+  // Si se pasa, el sidebar se usa dentro del drawer mobile: muestra botón cerrar.
+  onClose?: () => void;
 }
 
-const NAV: { id: AdminTab; label: string }[] = [
+// Navegación centralizada del admin (reutilizada por sidebar desktop y drawer
+// mobile). Una sola fuente para label + tab.
+export const ADMIN_NAV: { id: AdminTab; label: string }[] = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'clientes', label: 'Clientes' },
   { id: 'ventas', label: 'Ventas físicas' },
@@ -84,16 +88,22 @@ function AdminIcon({ tab }: { tab: AdminTab }) {
 }
 
 // Navegación lateral del panel admin. El estado (activeTab) vive en AdminPage.
-export function AdminSidebar({ activeTab, onTabChange, onExit }: AdminSidebarProps) {
+// Se renderiza como columna fija en desktop y dentro del drawer en tablet/mobile.
+export function AdminSidebar({ activeTab, onTabChange, onExit, onClose }: AdminSidebarProps) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.brand}>
         <span className={styles.logo}>OLFFY®</span>
         <span className={styles.badge}>Admin</span>
+        {onClose && (
+          <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Cerrar menú">
+            ✕
+          </button>
+        )}
       </div>
 
       <nav className={styles.nav}>
-        {NAV.map((item) => (
+        {ADMIN_NAV.map((item) => (
           <button
             key={item.id}
             type="button"

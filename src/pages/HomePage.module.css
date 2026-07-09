@@ -31,7 +31,14 @@
 }
 
 .aboutSection {
-  background: #f7f5f2;
+  position: relative;
+  overflow: hidden;
+  /* Tratamiento de marca: crema cálida con un acento lila radial, para que la
+     sección destaque del fondo blanco general sin perder suavidad. */
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(222, 221, 242, 0.55), transparent 60%),
+    radial-gradient(120% 90% at 0% 100%, rgba(255, 233, 168, 0.4), transparent 55%),
+    var(--olffy-crema-suave);
 }
 
 .aboutInner {
@@ -110,6 +117,12 @@
 .valueCard {
   padding: 26px;
   border-radius: var(--radius-lg);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(42, 28, 16, 0.1);
 }
 
 .valueIcon {

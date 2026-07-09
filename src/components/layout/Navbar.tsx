@@ -1,5 +1,4 @@
 import styles from './Navbar.module.css';
-import { NavDropdown } from './NavDropdown';
 import type { PublicPage } from './navigation';
 
 interface NavbarProps {
@@ -9,8 +8,10 @@ interface NavbarProps {
   onNavigate: (page: PublicPage) => void;
 }
 
-// Navbar sticky del storefront: logo, nav desktop con dropdowns, cuenta,
+// Navbar sticky del storefront: logo, nav desktop con links simples, cuenta,
 // carrito con contador y hamburguesa (mobile/tablet vía CSS media query).
+// Las categorías (Cuadernos, Planners, etc.) viven dentro de Tienda como
+// filtros internos, no como páginas del navbar.
 export function Navbar({ cartCount, onOpenCart, onOpenMenu, onNavigate }: NavbarProps) {
   return (
     <nav className={styles.navbar}>
@@ -23,36 +24,15 @@ export function Navbar({ cartCount, onOpenCart, onOpenMenu, onNavigate }: Navbar
           <button type="button" className={styles.navLink} onClick={() => onNavigate('home')}>
             Inicio
           </button>
-          <NavDropdown
-            label="Tienda"
-            onLabelClick={() => onNavigate('tienda')}
-            items={[
-              { label: 'Cuadernos', onClick: () => onNavigate('tienda') },
-              { label: 'Planners', onClick: () => onNavigate('tienda') },
-              { label: 'Stickers', onClick: () => onNavigate('tienda') },
-              { label: 'Calendarios', onClick: () => onNavigate('tienda') },
-              { label: 'Regalos', onClick: () => onNavigate('regalos') },
-            ]}
-          />
-          <NavDropdown
-            label="Novedades"
-            onLabelClick={() => onNavigate('novedades')}
-            items={[
-              { label: 'Nuevas colecciones', onClick: () => onNavigate('novedades') },
-              { label: 'Recién llegados', onClick: () => onNavigate('novedades') },
-              { label: 'Próximamente', onClick: () => onNavigate('novedades') },
-            ]}
-          />
-          <NavDropdown
-            label="Regalos"
-            onLabelClick={() => onNavigate('regalos')}
-            items={[
-              { label: 'Para amigas', onClick: () => onNavigate('regalos') },
-              { label: 'Para estudiantes', onClick: () => onNavigate('regalos') },
-              { label: 'Kits de regalo', onClick: () => onNavigate('regalos') },
-              { label: 'Por presupuesto', onClick: () => onNavigate('regalos') },
-            ]}
-          />
+          <button type="button" className={styles.navLink} onClick={() => onNavigate('tienda')}>
+            Tienda
+          </button>
+          <button type="button" className={styles.navLink} onClick={() => onNavigate('novedades')}>
+            Novedades
+          </button>
+          <button type="button" className={styles.navLink} onClick={() => onNavigate('regalos')}>
+            Regalos
+          </button>
           <button type="button" className={styles.navLink} onClick={() => onNavigate('historia')}>
             Nuestra historia
           </button>
