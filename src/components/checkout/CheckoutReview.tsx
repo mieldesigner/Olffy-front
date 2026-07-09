@@ -74,7 +74,7 @@ export function CheckoutReview({
           Aplicar
         </Button>
       </div>
-      {promoApplied && <div className={styles.promoApplied}>🎉 Código aplicado — 10% off</div>}
+      {promoApplied && <div className={styles.promoApplied}>Código aplicado — 10% off</div>}
       {promoError && !promoApplied && <div className={styles.promoError}>Código no válido</div>}
 
       <div className={styles.totals}>

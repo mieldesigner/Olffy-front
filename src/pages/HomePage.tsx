@@ -1,6 +1,7 @@
 import { HeroCarousel, FeatureBanner, BenefitsStrip } from '../components/home';
 import { ProductGrid } from '../components/product';
 import { Button, ProductImage } from '../components/ui';
+import { GiftIcon, type GiftIconName } from '../components/storefront';
 import type { PublicPage } from '../components/layout';
 import { HERO_SLIDES } from '../data/heroSlides.mock';
 import { PRODUCTS } from '../data/products.mock';
@@ -14,10 +15,10 @@ interface HomePageProps {
 
 const FEATURED_PRODUCTS = PRODUCTS.slice(0, 6);
 
-const VALUES = [
-  { icon: '🖌️', bg: 'var(--olffy-crema)', iconBg: 'var(--olffy-amarillo)', title: 'Diseño ilustrado', desc: 'Cada producto nace de una ilustración hecha a mano, con cariño y mucho color.' },
-  { icon: '📓', bg: 'var(--olffy-morado-suave)', iconBg: 'var(--olffy-morado)', title: 'Papelería con propósito', desc: 'Cuadernos y planners pensados para acompañarte a crear y organizar tus días.' },
-  { icon: '💛', bg: 'var(--olffy-naranjo-suave)', iconBg: 'var(--olffy-naranjo)', title: 'Hecho con amor', desc: 'Empacamos cada pedido a mano en Viña del Mar, listo para llegar a todo Chile.' },
+const VALUES: { icon: GiftIconName; bg: string; iconBg: string; title: string; desc: string }[] = [
+  { icon: 'palette', bg: 'var(--olffy-crema)', iconBg: 'var(--olffy-amarillo)', title: 'Diseño ilustrado', desc: 'Cada producto nace de una ilustración hecha a mano, con cariño y mucho color.' },
+  { icon: 'notebook', bg: 'var(--olffy-morado-suave)', iconBg: 'var(--olffy-morado)', title: 'Papelería con propósito', desc: 'Cuadernos y planners pensados para acompañarte a crear y organizar tus días.' },
+  { icon: 'heart', bg: 'var(--olffy-naranjo-suave)', iconBg: 'var(--olffy-naranjo)', title: 'Hecho con amor', desc: 'Empacamos cada pedido a mano en Viña del Mar, listo para llegar a todo Chile.' },
 ];
 
 // Home real del storefront — reemplaza el placeholder central de App.tsx.
@@ -81,7 +82,7 @@ export function HomePage({ onProductClick, onNavigate }: HomePageProps) {
             {VALUES.map((value) => (
               <div key={value.title} className={styles.valueCard} style={{ background: value.bg }}>
                 <div className={styles.valueIcon} style={{ background: value.iconBg }}>
-                  {value.icon}
+                  <GiftIcon name={value.icon} size={24} color="#fff" />
                 </div>
                 <h3 className={styles.valueTitle}>{value.title}</h3>
                 <p className={styles.valueDesc}>{value.desc}</p>

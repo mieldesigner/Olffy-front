@@ -5,4 +5,4 @@ export type { NavDropdownItem } from './NavDropdown';
 export { MobileMenuDrawer } from './MobileMenuDrawer';
 export { Footer } from './Footer';
 export { NewsletterForm } from './NewsletterForm';
-export type { PublicPage } from './navigation';
+export type { PublicPage, AppPage } from './navigation';

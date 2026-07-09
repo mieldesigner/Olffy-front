@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { ContactForm } from '../components/storefront';
+import { ContactForm, GiftIcon, type GiftIconName } from '../components/storefront';
 import { Accordion } from '../components/ui';
 import { FAQ } from '../data/faq.mock';
 import styles from './ContactoPage.module.css';
 
-const INFO_CARDS = [
-  { icon: '📍', bg: 'var(--olffy-crema)', iconBg: 'var(--olffy-amarillo)', title: 'Ubicación', text: 'Viña del Mar, Chile' },
-  { icon: '🕐', bg: 'var(--olffy-morado-suave)', iconBg: 'var(--olffy-morado)', title: 'Horario', text: 'Lun a Vie, 10:00–19:00' },
-  { icon: '📸', bg: 'var(--olffy-naranjo-suave)', iconBg: 'var(--olffy-naranjo)', title: 'Redes', text: '@olffy en Instagram' },
-  { icon: '✉️', bg: 'var(--olffy-amarillo-suave)', iconBg: '#c8901a', title: 'Email', text: 'hola@olffy.cl' },
+const INFO_CARDS: { icon: GiftIconName; bg: string; iconBg: string; title: string; text: string }[] = [
+  { icon: 'pin', bg: 'var(--olffy-crema)', iconBg: 'var(--olffy-amarillo)', title: 'Ubicación', text: 'Viña del Mar, Chile' },
+  { icon: 'clock', bg: 'var(--olffy-morado-suave)', iconBg: 'var(--olffy-morado)', title: 'Horario', text: 'Lun a Vie, 10:00–19:00' },
+  { icon: 'camera', bg: 'var(--olffy-naranjo-suave)', iconBg: 'var(--olffy-naranjo)', title: 'Redes', text: '@olffy en Instagram' },
+  { icon: 'mail', bg: 'var(--olffy-amarillo-suave)', iconBg: '#c8901a', title: 'Email', text: 'hola@olffy.cl' },
 ];
 
 const FAQ_ITEMS = FAQ.map((item) => ({ id: item.id, question: item.q, answer: item.a }));
@@ -54,7 +54,7 @@ export function ContactoPage() {
           {INFO_CARDS.map((info) => (
             <div key={info.title} className={styles.infoCard} style={{ background: info.bg }}>
               <div className={styles.infoIcon} style={{ background: info.iconBg }}>
-                {info.icon}
+                <GiftIcon name={info.icon} size={18} color="#fff" />
               </div>
               <div>
                 <div className={styles.infoTitle}>{info.title}</div>

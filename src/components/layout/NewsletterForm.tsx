@@ -20,7 +20,7 @@ export function NewsletterForm({ onSubscribe }: NewsletterFormProps) {
   };
 
   if (subscribed) {
-    return <p className={styles.subscribed}>🎉 ¡Gracias por suscribirte!</p>;
+    return <p className={styles.subscribed}>¡Gracias por suscribirte!</p>;
   }
 
   return (

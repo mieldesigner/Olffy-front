@@ -1,0 +1,129 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  background: var(--olffy-crema);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 3.5vw, 30px);
+}
+
+.flower {
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  color: rgba(233, 67, 0, 0.06);
+  pointer-events: none;
+}
+
+.head {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--olffy-cafe);
+}
+
+/* ── Tiles de estadística ── */
+.stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.stat {
+  background: var(--olffy-blanco);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  border: 1px solid var(--olffy-cafe-06);
+}
+
+.statSaldo {
+  border-color: var(--olffy-amarillo);
+  background: #fffdf6;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1;
+  color: var(--olffy-cafe);
+}
+
+.statSaldo .statValue {
+  color: var(--olffy-naranjo);
+}
+
+.statLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--olffy-cafe-55);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* ── Tiers de recompensas ── */
+.tiersHead {
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--olffy-cafe-55);
+  margin-bottom: 10px;
+}
+
+.tiers {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.tier {
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  background: var(--olffy-blanco);
+  border: 1.5px solid var(--olffy-cafe-06);
+}
+
+.tierReached {
+  background: var(--olffy-amarillo-suave);
+  border-color: var(--olffy-amarillo);
+}
+
+.tierPts {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--olffy-morado);
+}
+
+.tierReached .tierPts {
+  color: #c8901a;
+}
+
+.tierLabel {
+  font-size: 12.5px;
+  color: var(--olffy-cafe);
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.tierState {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: var(--olffy-cafe-55);
+}
+
+.tierStateReached {
+  color: #c8901a;
+}

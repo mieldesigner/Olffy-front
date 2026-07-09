@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import { AnnouncementBar, Navbar, MobileMenuDrawer, Footer } from './components/layout';
-import type { PublicPage } from './components/layout';
+import type { PublicPage, AppPage } from './components/layout';
 import { CartProvider, useCart } from './context/CartContext';
 import { CartDrawer } from './components/cart';
 import { ProductModal } from './components/product';
@@ -10,6 +10,10 @@ import { TiendaPage } from './pages/TiendaPage';
 import { CheckoutPage } from './pages/checkout/CheckoutPage';
 import { ContactoPage } from './pages/ContactoPage';
 import { NovedadesPage } from './pages/NovedadesPage';
+import { HistoriaPage } from './pages/HistoriaPage';
+import { RegalosPage } from './pages/RegalosPage';
+import { PuntosPage } from './pages/PuntosPage';
+import { AdminPage } from './pages/admin/AdminPage';
 import type { Product } from './types';
 
 const ANNOUNCEMENTS = [
@@ -19,29 +23,23 @@ const ANNOUNCEMENTS = [
   'Hecho con amor, claro',
 ];
 
-// Nombres legibles para el placeholder de páginas aún no migradas.
-// 'checkout', 'contacto' y 'novedades' no aparecen acá porque ya tienen página real.
-const PAGE_LABELS: Record<Exclude<PublicPage, 'checkout' | 'contacto' | 'novedades'>, string> = {
-  home: 'Inicio',
-  tienda: 'Tienda',
-  regalos: 'Regalos',
-  historia: 'Nuestra historia',
-  puntos: 'OLFFY Puntos',
-};
-
-// Fase 6B — Novedades real (colecciones + countdown + productos nuevos) +
-// Contacto (5B), Checkout (5A), Home (4A) y Tienda (4B) sobre el layout
-// público, el carrito y ProductCard/ProductModal. Sin router todavía:
-// currentPage es un simple useState.
+// Fase 8A — Admin interno mock. currentPage es AppPage (público + 'admin').
+// El admin tiene su propio layout (sin el chrome del storefront) y se accede
+// por el trigger oculto del footer, no por el navbar público.
 function AppShell() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [currentPage, setCurrentPage] = useState<PublicPage>('home');
+  const [currentPage, setCurrentPage] = useState<AppPage>('home');
   const { cartCount, openCart } = useCart();
 
   const handleNavigate = (page: PublicPage) => {
     setCurrentPage(page);
   };
+
+  // Admin: vista separada, sin AnnouncementBar/Navbar/Footer del storefront.
+  if (currentPage === 'admin') {
+    return <AdminPage onExit={() => setCurrentPage('home')} />;
+  }
 
   return (
     <div className={styles.page}>
@@ -65,21 +63,12 @@ function AppShell() {
         {currentPage === 'novedades' && (
           <NovedadesPage onProductClick={setSelectedProduct} onNavigate={handleNavigate} />
         )}
-        {currentPage !== 'home' &&
-          currentPage !== 'tienda' &&
-          currentPage !== 'checkout' &&
-          currentPage !== 'contacto' &&
-          currentPage !== 'novedades' && (
-          <div className={styles.placeholder}>
-            <h1 className={styles.placeholderTitle}>{PAGE_LABELS[currentPage]}</h1>
-            <p className={styles.placeholderText}>
-              Esta página todavía no se ha migrado — llega en una fase posterior.
-            </p>
-          </div>
-        )}
+        {currentPage === 'historia' && <HistoriaPage />}
+        {currentPage === 'regalos' && <RegalosPage onProductClick={setSelectedProduct} />}
+        {currentPage === 'puntos' && <PuntosPage />}
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      <Footer onNavigate={handleNavigate} onEnterAdmin={() => setCurrentPage('admin')} />
 
       <MobileMenuDrawer isOpen={menuOpen} onClose={() => setMenuOpen(false)} onNavigate={handleNavigate} />
 

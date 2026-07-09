@@ -1,4 +1,5 @@
 import { Button } from '../ui';
+import { GiftIcon, type GiftIconName } from '../storefront';
 import styles from './CheckoutPayment.module.css';
 
 export type PaymentMethod = 'webpay' | 'transfer' | 'pickup';
@@ -11,10 +12,10 @@ interface CheckoutPaymentProps {
   onBack: () => void;
 }
 
-const METHODS: { value: PaymentMethod; icon: string; title: string; desc: string }[] = [
-  { value: 'webpay', icon: '💳', title: 'Webpay', desc: 'Tarjeta de crédito o débito (mock)' },
-  { value: 'transfer', icon: '🏦', title: 'Transferencia', desc: 'Transferencia bancaria directa (mock)' },
-  { value: 'pickup', icon: '🏬', title: 'Pago / retiro en tienda', desc: 'Paga al retirar en Viña del Mar' },
+const METHODS: { value: PaymentMethod; icon: GiftIconName; title: string; desc: string }[] = [
+  { value: 'webpay', icon: 'card', title: 'Webpay', desc: 'Tarjeta de crédito o débito (mock)' },
+  { value: 'transfer', icon: 'bank', title: 'Transferencia', desc: 'Transferencia bancaria directa (mock)' },
+  { value: 'pickup', icon: 'store', title: 'Pago / retiro en tienda', desc: 'Paga al retirar en Viña del Mar' },
 ];
 
 // Paso 3 del checkout — método de pago mock (sin pasarela real) + resumen
@@ -33,7 +34,9 @@ export function CheckoutPayment({ paymentMethod, onChangeMethod, formattedTotal,
               onClick={() => onChangeMethod(method.value)}
             >
               <span className={`${styles.radio} ${isActive ? styles.radioActive : ''}`} />
-              <span className={styles.methodIcon}>{method.icon}</span>
+              <span className={styles.methodIcon}>
+                <GiftIcon name={method.icon} size={20} color="var(--olffy-morado)" />
+              </span>
               <span className={styles.methodInfo}>
                 <span className={styles.methodTitle}>{method.title}</span>
                 <span className={styles.methodDesc}>{method.desc}</span>

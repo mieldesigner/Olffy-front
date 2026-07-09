@@ -10,3 +10,7 @@ export type PublicPage =
   | 'contacto'
   | 'puntos'
   | 'checkout';
+
+// Página interna del panel admin — fuera del set público. App.tsx maneja el
+// estado de navegación como AppPage; el admin no aparece en el navbar.
+export type AppPage = PublicPage | 'admin';

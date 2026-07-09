@@ -14,7 +14,12 @@ interface CheckoutSuccessProps {
 export function CheckoutSuccess({ orderNumber, itemCount, formattedTotal, onGoHome }: CheckoutSuccessProps) {
   return (
     <div className={styles.wrap}>
-      <div className={styles.icon}>🎉</div>
+      <div className={styles.icon}>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.5" />
+          <path d="M7.5 12.5l3 3 6-6.5" />
+        </svg>
+      </div>
       <h1 className={styles.title}>¡Compra confirmada!</h1>
       <p className={styles.text}>
         Gracias por tu pedido — te enviaremos un correo con los detalles de envío en las

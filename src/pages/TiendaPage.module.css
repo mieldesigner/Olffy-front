@@ -1,7 +1,7 @@
 .wrap {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(36px, 4.5vw, 56px) clamp(14px, 4vw, 48px) clamp(52px, 7vw, 90px);
+  padding: clamp(36px, 4.5vw, 56px) clamp(14px, 4vw, 48px) clamp(64px, 8vw, 100px);
 }
 
 .header {
@@ -20,7 +20,7 @@
   margin: 0 0 8px;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(30px, 4.5vw, 52px);
+  font-size: clamp(28px, 4.5vw, 46px);
   color: var(--olffy-cafe);
   letter-spacing: -0.02em;
 }

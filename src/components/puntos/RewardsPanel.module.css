@@ -1,0 +1,99 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--olffy-cafe-08);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  background: var(--olffy-blanco);
+}
+
+.cardLocked {
+  background: rgba(42, 28, 16, 0.02);
+}
+
+.iconBox {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  background: var(--olffy-amarillo-suave);
+  color: var(--olffy-naranjo);
+}
+
+.cardLocked .iconBox {
+  background: var(--olffy-cafe-06);
+  color: var(--olffy-cafe-55);
+}
+
+.pts {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--olffy-morado);
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--olffy-cafe);
+  margin-top: 2px;
+}
+
+.desc {
+  font-size: 12.5px;
+  color: var(--olffy-cafe-55);
+  margin-top: 6px;
+  flex: 1;
+}
+
+.action {
+  margin-top: 16px;
+}
+
+.requestBtn {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--olffy-naranjo);
+  color: var(--olffy-blanco);
+  box-shadow: 0 3px 0 #b23300;
+}
+
+.lockedBtn {
+  width: 100%;
+  border: 1px solid var(--olffy-cafe-08);
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--olffy-cafe-55);
+  cursor: not-allowed;
+}
+
+.requested {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  justify-content: center;
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 13px;
+  font-weight: 600;
+}

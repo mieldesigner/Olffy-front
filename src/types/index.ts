@@ -58,8 +58,10 @@ export interface HeroSlide {
 
 export interface QuizOption {
   label: string;
-  emoji: string;
   value: string;
+  // Nombre de ícono GiftIcon (line icon SVG) — reemplaza el emoji del export
+  // original de Cloud Design.
+  icon?: string;
 }
 
 export interface QuizQuestion {

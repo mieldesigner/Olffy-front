@@ -63,6 +63,9 @@
 
 .puntosLink {
   composes: link;
+  display: flex;
+  align-items: center;
+  gap: 9px;
   background: rgba(250, 180, 5, 0.1);
   color: #c8901a;
   margin-top: 8px;
